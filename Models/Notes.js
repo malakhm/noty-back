@@ -11,6 +11,10 @@ const NoteSchema = new Schema({
         type: String,
         required: true
     },
+    isDeleted:{
+        type: Boolean,
+        default: false
+    },
     date: {
         type: Date,
         default: Date.now

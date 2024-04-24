@@ -18,7 +18,8 @@ class NotesController {
     static async getSingleNote(req, res) {
         const { id } = req.params;
         try {
-            const note = await Notes.findById(id, { isDeleted: false });
+            const note = await Notes.findOne({id}, { isDeleted: false });
+            // console.log(`note is ${note}`)
             if (!note) {
                 return res.status(404).json({ message: "Note not found" });
             }

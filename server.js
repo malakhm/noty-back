@@ -7,6 +7,9 @@ const app = express();
 app.use(cors())
 
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
-});
+mongoose.connect(process.env.MONGO_URI)
+.then(()=>app.listen(process.env.PORT, () => {
+    console.log(`connected to db & running on port ${process.env.PORT}`);
+})).catch((error) => {
+    console.error(error);
+  });
